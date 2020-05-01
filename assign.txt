@@ -1,0 +1,121 @@
+every
+filter
+find
+findIndex
+flat
+flatMap
+some
+-------------------------------------------------------------------
+every:
+// creating an alternate "every" function
+function myEvery(array,fun){
+  for(i=0;i<array.length;i++){
+    if(fun(array[i])===false){
+      return false;
+    }
+  }
+  return true; 	
+}
+var array = [1,2,3];
+function fun(item){
+  return item%2==0;
+}
+console.log(myEvery(array,fun));
+
+----------------------------------------------------------------------
+
+filter:
+function myFilter(array,func){
+  var newArray=[];
+  for(i=0;i<array.length;i++){
+  if(func(array[i])){
+    newArray.push(array[i]);
+  }
+}
+return newArray;
+}
+
+var array = [1,2,3];
+function func(item){
+  return item%2==0;
+}
+
+console.log(myFilter(array,func))
+
+---------------------------------------------------------------------------
+
+Find:
+function myFind(array,func){
+  for(i=0;i<array.length;i++){
+    if(func(array[i])){
+           return array[i];
+    }
+  }
+}
+
+var array = [{id:1},{id:2},{id:3}];
+function f(item){
+  return item.id===3;
+}
+
+console.log(myFind(array,f));
+
+---------------------------------------------------------------------------------
+
+FindIndex:
+
+function myFindIndex(array,func){
+  for(i=0;i<array.length;i++){
+    if(func(array[i])){
+           return i;
+    }
+  }
+}
+
+var array = [{id:1},{id:2},{id:3}];
+function f(item){
+  return item.id===3;
+}
+
+console.log(myFindIndex(array,f));
+
+-------------------------------------------------------------------------------------
+
+flat:
+
+var array = [1,2,3,[4,5,6]]
+
+function myFlat(array){
+  var a = [];
+  for(i=0;i<array.length;i++){
+    if(array[i].length>1){
+      for(j=0;j<array[i].length;j++){
+        a.push(array[i][j]);
+      }
+    }
+    else{
+          a.push(array[i]);
+        }
+  }
+  return a;
+}
+
+console.log(myFlat(array));
+
+---------------------------------------------------------------------------------------------
+
+Some:
+
+function mySome(array,fun){
+  for(i=0;i<array.length;i++){
+    if(fun(array[i])===true){
+      return true;
+    }
+  }
+  return false;
+}
+var array = [1,2,5];
+function fun(item){
+  return item%2==0;
+}
+console.log(mySome(array,fun));
